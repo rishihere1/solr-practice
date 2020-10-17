@@ -102,5 +102,6 @@ public class MerchantVoucherSolrRepositoryImpl {
     SolrQuery solrQuery = new SolrQuery();
     solrQuery.setQuery("*" + ":" + "*");
     return solrQuery;
+    // Done
   }
 }
