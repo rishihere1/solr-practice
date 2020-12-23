@@ -56,4 +56,12 @@ public class SolrService {
   public void query() {
     merchantVoucherSolrRepository.query();
   }
+
+  @SneakyThrows
+  public void addDataInBulk() {
+    for (int i=1;i<=100;i++) {
+      MerchantVoucherSolrDocument merchantVoucherSolrDocument = SolrUtil.getMerchantVoucherSolrDocumentInBulk(i);
+      merchantVoucherSolrRepository.addVoucherToSolr(merchantVoucherSolrDocument);
+    }
+  }
 }

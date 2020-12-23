@@ -44,7 +44,7 @@ public class SolrController {
 
   @PutMapping("/deleteAllDocuments")
   public String deleteAllDocuments() {
-    solrService.delete();
+//    solrService.delete();
     return "Done";
   }
 
@@ -52,6 +52,12 @@ public class SolrController {
   public String get() {
     solrService.query();
     return "DONE";
+  }
+
+  @PostMapping("/addInBulk")
+  public String addDataInBulk() {
+//    solrService.addDataInBulk();
+    return "Done";
   }
 
 }

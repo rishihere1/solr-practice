@@ -22,7 +22,7 @@ import lombok.SneakyThrows;
 @Repository
 public class MerchantVoucherSolrRepositoryImpl {
 
-  SolrClient solr = new HttpSolrClient.Builder("http://localhost:8983/solr/merchant_voucher").build();
+  SolrClient solr = new HttpSolrClient.Builder("http://localhost:8983/solr/voucher_core").build();
 
   public void addVoucherToSolr(MerchantVoucherSolrDocument merchantVoucherSolrDocument) throws IOException, SolrServerException {
     SolrInputDocument document = new SolrInputDocument();
@@ -34,12 +34,15 @@ public class MerchantVoucherSolrRepositoryImpl {
     document.addField("merchantCode", merchantVoucherSolrDocument.getMerchantCode());
     document.addField("itemSkuCount", merchantVoucherSolrDocument.getItemSkuCount());
     document.addField("itemSku", merchantVoucherSolrDocument.getItemSku());
-    document.addField("markForStop", merchantVoucherSolrDocument.isMarkForStop());
+//    document.addField("markForStop", merchantVoucherSolrDocument.isMarkForStop());
     document.addField("minAmountSpend", merchantVoucherSolrDocument.getMinAmountSpend());
     document.addField("startDate", merchantVoucherSolrDocument.getStartDate());
     document.addField("endDate", merchantVoucherSolrDocument.getEndDate());
     document.addField("markForDelete", merchantVoucherSolrDocument.isMarkForDelete());
     document.addField("storeId", merchantVoucherSolrDocument.getStoreId());
+    document.addField("id", merchantVoucherSolrDocument.getId());
+    document.addField("voucherCode", merchantVoucherSolrDocument.getVoucherCode());
+    document.addField("productUrls", merchantVoucherSolrDocument.getProductUrls());
 
     solr.add(document);
     solr.commit();
@@ -77,8 +80,8 @@ public class MerchantVoucherSolrRepositoryImpl {
 
   @SneakyThrows
   public void delete() {
-//    solr.deleteByQuery("*");
-//    solr.commit();
+    solr.deleteByQuery("*");
+    solr.commit();
   }
 
   @SneakyThrows

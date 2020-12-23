@@ -1,6 +1,7 @@
 package com.example.solr.document;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
@@ -40,9 +41,6 @@ public class MerchantVoucherSolrDocument {
   @Field(value = "itemSku")
   private String itemSku;
 
-  @Field(value = "markForStop")
-  private boolean markForStop;
-
   @Field(value = "voucherCode")
   private String voucherCode;
 
@@ -52,7 +50,7 @@ public class MerchantVoucherSolrDocument {
   @Field(value = "startDate")
   private Date startDate;
 
-  @Field(value = "startDate")
+  @Field(value = "endDate")
   private Date endDate;
 
   @Field(value = "markForDelete")
@@ -60,5 +58,8 @@ public class MerchantVoucherSolrDocument {
 
   @Field(value = "storeId")
   private String storeId;
+
+  @Field(value = "productUrls")
+  private List<String> productUrls;
 
 }
